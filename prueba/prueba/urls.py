@@ -18,13 +18,16 @@ from django.contrib import admin
 from django.urls import path
 from inicio import views
 from django.conf import settings
+from registros import views as views_registros
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.principal, name="Principal"),
+    path('', views_registros.registros, name="Principal"),
+#Indicamos que ahora la ruta de principal.html se encuentra en la view de registros
     path('contacto/', views.contacto, name="Contacto"),
     path('formulario/', views.formulario, name="Formulario"),
     path('ejemplo/', views.ejemplo, name="Ejemplo"),
+    
     
 ]
 
