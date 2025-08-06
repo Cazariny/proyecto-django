@@ -23,10 +23,18 @@ from registros import views as views_registros
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views_registros.registros, name="Principal"),
+    path('comentarios/', views_registros.comentarios, name="Comentarios"),
 #Indicamos que ahora la ruta de principal.html se encuentra en la view de registros
-    path('contacto/', views.contacto, name="Contacto"),
+    path('contacto/',views_registros.contacto,name="Contacto"),
     path('formulario/', views.formulario, name="Formulario"),
     path('ejemplo/', views.ejemplo, name="Ejemplo"),
+    path('registrar/',views_registros.registrar,name="Registrar"),
+    path('eliminarComentario/<int:id>/', views_registros.eliminarComentarioContacto,name='Eliminar'),
+    path('consultasSQL',views_registros.consultasSQL,name="sql"),
+    path('subir',views_registros.archivos,name="Subir"),
+    
+    path('formEditarComentario/<int:id>/',views_registros.consultarComentarioIndividual, name='ConsultaIndividual'),
+    path('editarComentario/<int:id>/',views_registros.editarComentarioContacto,name='Editar'),
     
     
 ]

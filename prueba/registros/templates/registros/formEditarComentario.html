@@ -11,15 +11,14 @@
 
 {% block subtitulo %} Nuevo {% endblock subtitulo %}
 
-{% block Encabezado_Title %}Contacto{% endblock Encabezado_Title %}
+{% block Encabezado_Title %}Contactanos{% endblock Encabezado_Title %}
 
-{% block subte %}Ingresa tu Informacion{% endblock subte %}
+{% block subte %}Modificando comentario{% endblock subte %}
 
 {% block contenido %} 
-<!-- Contenido Principal-->
 
-  <!-- Formulario -->
-  <form class="form-horizontal" action="{% url 'Registrar'%}" method="POST" role="form">
+ <!-- Formulario -->
+  <form class="form-horizontal" action="{% url 'Editar' comentario.id%}" method="POST" role="form">
     {%csrf_token%}
     <div class="panel panel-default">
       <div class="panel-body">
@@ -27,13 +26,13 @@
         <div class="form-group">
           <label class="col-sm-2 control-label text-right">Nombre:</label>
           <div class="col-sm-10">
-            <input name="usuario" type="text" class="form-control" />
+            <input value={{comentario.usuario}} name="usuario" type="text" class="form-control">
           </div>
         </div>
         <div class="form-group">
           <label class="col-sm-2 control-label text-right">Mensaje:</label>
           <div class="col-sm-10">
-            <textarea name="mensaje" cols= "100" rows="10" class="form-control"> </textarea> 
+            <textarea name="mensaje" cols="50" rows="10" class="form-control">{{comentario.mensaje}} </textarea>
           </div>
         </div>
 
@@ -43,6 +42,6 @@
       </div>
     </div>
   </form>
+  </form>
   <!-- Fin del Formulario -->
-<!-- /Contenido Principal-->
-{% endblock contenido %}
+{%endblock%}

@@ -1,0 +1,42 @@
+{% extends "inicio/encabezado.html" %} 
+
+{% block titulo %} Principal {% endblock titulo %}
+
+{% block imagen %} {%load static%} {%static './inicio/images/home.png'%} {% endblock imagen %}
+
+{% block Nombre_Pag %} Principal {% endblock %}
+
+{% block subtitulo %} Dsm {% endblock subtitulo %} 
+
+{% block Encabezado_Title %} Comentarios {% endblock Encabezado_Title %} 
+
+{% block subte%}Lista de Comentarios{% endblock subte %}
+
+{% block contenido %}
+
+<!--Tabla de Alumnos -->
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Usuario</th>
+      <th>Mensaje</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for comentario in comentarios %}
+      <tr>
+
+        <td class="text-semibold">{{comentario.usuario}}</td>
+        <td class="muted">{{comentario.mensaje}}</td>
+        <td class="muted">
+          <a href="{%url 'ConsultaIndividual' comentario.id%}">Editar</a>
+        </td>
+        <td class="text-center"><a href="{%url 'Eliminar' comentario.id%}">Eliminar</a></td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<!-- /Tabla de alumnos -->
+{% endblock contenido %}
